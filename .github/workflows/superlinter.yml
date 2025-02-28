@@ -1,0 +1,42 @@
+name: Superlinter
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  packages: read
+  statuses: write
+
+jobs:
+  build:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: read
+      statuses: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full history for the linter to work properly
+
+      - name: Debug Checkstyle Config
+        run: |
+          ls -la  # Zeigt alle Dateien im Verzeichnis an
+          cat checkstyle.xml  # Gibt den Inhalt der checkstyle.xml aus
+
+      - name: Super-linter
+        uses: super-linter/super-linter@v7.3.0
+        env:
+          VALIDATE_JAVA: true
+          CHECKSTYLE_CONFIG_FILE: checkstyle.xml  # Pfad zur checkstyle.xml
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
