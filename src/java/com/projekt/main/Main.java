@@ -8,7 +8,7 @@ public final class Main {
   /**
    * Die Hauptmethode, die die Anwendung startet.
    *
-   * @param args Kommandozeilenargumente, die beim Start der Anwendung übergeben werden
+   * @param args Kommandozeilenargumente
    */
   public static void main(final String[] args) {
     System.out.println("Hello there");
