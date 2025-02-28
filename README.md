@@ -1,1 +1,3 @@
 # LastDance
+
+Die letzte Hoffnung
